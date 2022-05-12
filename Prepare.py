@@ -66,7 +66,7 @@ def makeLib(file_path, residue_name, connect0=None, connect1=None, charges='bcc'
 		os.remove(name+".frcmod")
 		os.remove("%s.in"%name)
 		os.remove("PDB_tmp.pdb")
-	os.remove("leap.log")
+		os.remove("leap.log")
 	return length
 
 ## toggleHydrogens
