@@ -158,7 +158,7 @@ for ntide in 'GAUC':
         #Compare to lowest energy, if lowest...
         if free_E == None or energy < free_E:
             #Tell
-            print(f"First: ntide/GAUC: {ntide}; chunk: {i} energy: {energy}")
+            print(f"First: ntide: {ntide}/GAUC; chunk: {i} energy: {energy}")
             #Set free energy to energy
             free_E = energy
             #Remember positions
