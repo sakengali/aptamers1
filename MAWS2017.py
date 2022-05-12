@@ -251,7 +251,7 @@ for i in range(N_NTIDES):
                 energy = complex.get_energy()[0]
                 #Check if best
                 if free_E == None or energy < free_E:
-                    print(f"N_NTIDE: {i+1}/15;  ntide: {ntide}/15; chunk: {k+1}/5000; energy: {energy}")
+                    print(f"N_NTIDE: {i+1}/15;  ntide: {ntide}/GAUC; chunk: {k+1}/5000; energy: {energy}")
                     free_E = energy
                     position = complex.positions[:]
                 #Remember energies
