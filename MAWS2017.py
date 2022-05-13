@@ -119,6 +119,7 @@ best_positions = None
 
 output.write("Initialized succesfully!\n")
 
+#to select nucleotide?
 #for each nucleotide in GATC
 for ntide in 'GAUC':
     output.write("{0}: starting initial step for '{1}'\n".format(str(datetime.now()),ntide))
@@ -154,7 +155,7 @@ for ntide in 'GAUC':
             
         #Get energy of the complex
         energy = complex.get_energy()[0]
-        print('////////////////////////////////////////////////////////got here')
+        #print('////////////////////////////////////////////////////////got here')
 
         #Compare to lowest energy, if lowest...
         if free_E == None or energy < free_E:
@@ -252,7 +253,7 @@ for i in range(N_NTIDES):
                 energy = complex.get_energy()[0]
                 #Check if best
                 if free_E == None or energy < free_E:
-                    print(energy)
+                    print("energy: ", energy)
                     free_E = energy
                     position = complex.positions[:]
                 #Remember energies

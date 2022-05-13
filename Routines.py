@@ -27,7 +27,10 @@ def ScoreThreshold(sample, beta, threshold):
 
 def ZPS(sample, beta=0.01):
 	Z = math.fsum(map(math.exp, map(math.fmul, [-beta]*len(sample), np.asarray(sample))))
-	P = map(math.fdiv, map(math.exp, map(math.fmul, [-beta]*len(sample), np.asarray(sample))), np.asarray([Z]*len(sample)))
+
+	#turning map into list to find its length for entropy
+	P = list(map(math.fdiv, map(math.exp, map(math.fmul, [-beta]*len(sample), np.asarray(sample))), np.asarray([Z]*len(sample))))
+	
 	S = Entropy(P)
 	return Z, P, S
 
