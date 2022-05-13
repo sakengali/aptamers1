@@ -575,6 +575,7 @@ class Complex(object):
     #get current complex energy
     def get_energy(self):
         self.simulation.context.setPositions(self.positions)
+        print('////////////////////////////////////////////////////////got here')
         state = self.simulation.context.getState(getPositions=True,getEnergy=True,groups=1)
         free_E = state.getPotentialEnergy().value_in_unit(unit.kilojoules_per_mole)
         return free_E, self.positions

@@ -300,3 +300,4 @@ output.write("Final sequence: {0}\n".format(best_sequence))
 step.close()
 entropyLog.close()
 output.close()
+
