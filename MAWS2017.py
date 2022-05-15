@@ -88,8 +88,10 @@ output.write("Start time: {0}\n".format(str(datetime.now())))
 #Build Structure-object for DNA residues
 RNA = XMLStructure("RNA.xml")
 
+#Changed forcefield to ff14SB (default when creating amber files)
+
 #Instantiate the Complex for further computation
-cpx = Complex("leaprc.ff12SB")
+cpx = Complex("leaprc.ff14SB")
 
 #Add an empty Chain to the Complex, of structure DNA
 cpx.add_chain('', RNA)
@@ -98,7 +100,7 @@ cpx.add_chain('', RNA)
 cpx.add_chain_from_PDB(PDB_PATH,parameterized=True)
 
 #Build a complex with the pdb only, to get center of mass of the pdb --#
-c = Complex("leaprc.ff12SB")
+c = Complex("leaprc.ff14SB")
 
 c.add_chain_from_PDB(PDB_PATH,parameterized=True)
 
@@ -252,7 +254,7 @@ for i in range(N_NTIDES):
                 energy = complex.get_energy()[0]
                 #Check if best
                 if free_E == None or energy < free_E:
-                    print(f"N_NTIDE: {i+1}/15;  ntide: {ntide}/GAUC; chunk: {k+1}/5000; energy: {energy}")
+                    print(f"N_NTIDE: {i+2}/{N_NTIDES};  ntide: {ntide}/GAUC; chunk: {k+1}/5000; energy: {energy}")
                     free_E = energy
                     position = complex.positions[:]
                 #Remember energies
