@@ -36,7 +36,7 @@ class Structure(object):
             for index, residue in enumerate(self.residue_names):
                 self.connect[residue] = connect[index]
 
-        print("Residue names: ", self.residue_names)
+        print("(mb make a mistake here:) Residue names: ", self.residue_names)
         self.alias = defaultdict(lambda : None)
         if self.residue_names:
             for residue_name in self.residue_names:
