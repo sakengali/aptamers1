@@ -112,8 +112,6 @@ class Structure(object):
 
     def translate(self, sequence):
         sequence_array = sequence.split(' ')
-        #print('sequence array:', sequence_array)
-        #print('next thing:', self.alias)
         if len(sequence_array) == 1:
             return self.alias[sequence_array[0]][0]
         else:
