@@ -283,6 +283,10 @@ for i in range(N_NTIDES):
     app.PDBFile.writeModel(best_topology, best_positions, file=pdblog, modelIndex=1)
     pdblog.close()
 
+    #also print it: 
+    print(f"Completed step {i+2}. Selected sequence: {best_sequence}")
+
+
 
 #Render resulting aptamer to pdb
 result_complex = copy.deepcopy(cpx)
