@@ -121,7 +121,6 @@ best_positions = None
 
 output.write("Initialized succesfully!\n")
 
-#to select nucleotide?
 #for each nucleotide in GATC
 for ntide in 'GAUC':
     output.write("{0}: starting initial step for '{1}'\n".format(str(datetime.now()),ntide))
