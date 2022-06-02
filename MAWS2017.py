@@ -22,8 +22,8 @@ from Routines import ZPS, S
 from Kernels import centerOfMass
 from collections import defaultdict
 from operator import itemgetter
-from simtk.openmm import unit
-from simtk.openmm import app
+from openmm import unit
+from openmm import app
 import Space
 
 #Parser
@@ -283,7 +283,7 @@ for i in range(N_NTIDES):
     pdblog.close()
 
     #also print it: 
-    print(f"Completed step {i+2}. Selected sequence: {best_sequence}")
+    print(f"****** Completed step {i+2}. Selected sequence: {best_sequence}")
 
 
 

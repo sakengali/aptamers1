@@ -1,6 +1,6 @@
 import numpy as np
-from simtk.openmm import app
-import simtk.openmm as mm
+from openmm import app
+import openmm as mm
 from simtk import unit
 
 

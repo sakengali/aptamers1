@@ -1,6 +1,6 @@
 import subprocess
 import os
-from simtk.openmm import app
+from openmm import app
 
 ## makeLib
 # parametrizes a pdb or mol2 file to generate a .lib library file for tleap / nab
