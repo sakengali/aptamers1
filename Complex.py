@@ -271,7 +271,7 @@ class Complex(object):
             self.platform = mm.Platform.getPlatformByName('CUDA')
             
             #create simulation
-            self.simulation = app.Simulation(self.topology, self.system, self.integrator, self.platfrom)
+            self.simulation = app.Simulation(self.topology, self.system, self.integrator, self.platform)
         else:
             raise ValueError('Empty Complex! CANNOT build!')
             
