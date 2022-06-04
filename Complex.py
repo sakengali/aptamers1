@@ -263,10 +263,15 @@ class Complex(object):
             self.positions = self.inpcrd.positions
             self.integrator = mm.LangevinIntegrator(300.*unit.kelvin, 1./unit.picosecond, 0.002*unit.picoseconds)
             
-            #create system (changed to obc2)
+            #create system
             self.system = self.prmtop.createSystem(nonbondedCutoff=5*unit.angstrom, nonbondedMethod=app.NoCutoff,
                                                    constraints=None, implicitSolvent=app.OBC1)
-            self.simulation = app.Simulation(self.topology, self.system, self.integrator)
+
+            #set platform (by NU iGEM)
+            self.platform = mm.Platform.getPlatformByName('CUDA')
+            
+            #create simulation
+            self.simulation = app.Simulation(self.topology, self.system, self.integrator, self.platfrom)
         else:
             raise ValueError('Empty Complex! CANNOT build!')
             
