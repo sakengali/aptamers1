@@ -261,7 +261,9 @@ class Complex(object):
 
             self.topology = self.prmtop.topology
             self.positions = self.inpcrd.positions
-            self.integrator = mm.LangevinIntegrator(300.*unit.kelvin, 1./unit.picosecond, 0.002*unit.picoseconds)
+
+            #step size set to 0.001 (by NU iGEM)
+            self.integrator = mm.LangevinIntegrator(300.*unit.kelvin, 1./unit.picosecond, 0.001*unit.picoseconds)
             
             #create system
             self.system = self.prmtop.createSystem(nonbondedCutoff=5*unit.angstrom, nonbondedMethod=app.NoCutoff,
