@@ -268,7 +268,7 @@ class Complex(object):
                                                    constraints=None, implicitSolvent=app.OBC1)
 
             #set platform (by NU iGEM)
-            self.platform = mm.Platform.getPlatformByName('OpenCL')
+            self.platform = mm.Platform.getPlatformByName('CUDA')
             
             #create simulation
             self.simulation = app.Simulation(self.topology, self.system, self.integrator, self.platform)
