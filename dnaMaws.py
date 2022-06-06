@@ -168,7 +168,7 @@ for ntide in ["DGN", "DAN", "DTN", "DCN"]:
         #Compare to lowest energy, if lowest...
         if free_E == None or energy < free_E:
             #Tell
-            print(f"First: ntide: {ntide}/GATC; chunk: {i+1}/5000; energy: {energy}")
+            print(f"protein: {JOB_NAME}; First: ntide: {ntide}/GATC; chunk: {i+1}/5000; energy: {energy}")
             #Set free energy to energy
             free_E = energy
             #Remember positions
@@ -262,7 +262,7 @@ for i in range(N_NTIDES):
                 energy = complex.get_energy()[0]
                 #Check if best
                 if free_E == None or energy < free_E:
-                    print(f"N_NTIDE: {i+2}/{N_NTIDES};  ntide: {ntide}/GATC; chunk: {k+1}/5000; energy: {energy}")
+                    print(f"protein: {JOB_NAME}; N_NTIDE: {i+2}/{N_NTIDES};  ntide: {ntide}/GATC; chunk: {k+1}/5000; energy: {energy}")
                     free_E = energy
                     position = complex.positions[:]
                 #Remember energies
