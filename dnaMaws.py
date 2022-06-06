@@ -56,7 +56,7 @@ if args.firstchunksize:
 CHUNK_SIZE = 5000
 if args.secondchunksize:
     CHUNK_SIZE = args.secondchunksize
-N_NTIDES = 40
+N_NTIDES = 60
 if args.ntides:
     N_NTIDES = args.ntides
 PDB_PATH = "/net/data.isilon/ag-reils/igem2015/testenv/silane.pdb"
