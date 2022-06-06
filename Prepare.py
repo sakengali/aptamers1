@@ -4,7 +4,7 @@ from openmm import app
 
 ## makeLib
 # parametrizes a pdb or mol2 file to generate a .lib library file for tleap / nab
-def makeLib(file_path, residue_name, connect0=None, connect1=None, charges='bcc', atom_type='gaff', force_field='leaprc.ff12SB', parameterized=False):
+def makeLib(file_path, protein_name, residue_name, connect0=None, connect1=None, charges='bcc', atom_type='gaff', force_field='leaprc.ff12SB', parameterized=False):
 	name, extension = file_path.split('/')[-1].split(".")
 	lib_path = '/'.join(file_path.split('/')[:-1]+[residue_name])
 	tleap_input = """
@@ -54,8 +54,8 @@ def makeLib(file_path, residue_name, connect0=None, connect1=None, charges='bcc'
 		subprocess.call("parmchk -i %s.mol2 -f mol2 -o %s.frcmod"%(name, lib_path), shell=True)
 	subprocess.call("tleap -f %s.in"%name, shell=True)
 
-	#load PDB info into PDBfile object (doesn't seem to be used)
-	PDB = app.PDBFile('PDB_tmp.pdb')
+	#load PDB info into PDBfile object; protein_name added by NU_iGEM team
+	PDB = app.PDBFile(f'{protein_name}_PDB_tmp.pdb')
 	
 	#
 	length = sum([1 for atom in PDB.topology.atoms()])
