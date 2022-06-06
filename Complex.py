@@ -223,8 +223,8 @@ class Complex(object):
             chainID = 0
         self.chains.append(Chain(self, structure, sequence=sequence, start=start, ID=chainID))
 
-    def add_chain_from_PDB(self, pdb, structure=None, pdb_name='PDB', parameterized=False):
-        length = makeLib(pdb, pdb_name, parameterized=parameterized)
+    def add_chain_from_PDB(self, pdb, protein_name, structure=None, pdb_name='PDB', parameterized=False):
+        length = makeLib(pdb, protein_name, pdb_name, parameterized=parameterized)
         path = '/'.join(pdb.split('/')[:-1])
         structure = Structure([pdb_name], residue_length=[length], residue_path=path)
         self.add_chain(pdb_name, structure)

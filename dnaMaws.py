@@ -105,12 +105,12 @@ cpx.add_chain("G C A T", DNA)
 
 
 #Add a chain to the complex using a pdb file (e.g. "xylanase.pdb")
-cpx.add_chain_from_PDB(PDB_PATH,parameterized=True)
+cpx.add_chain_from_PDB(PDB_PATH, protein_name=JOB_NAME, parameterized=True)
 
 #Build a complex with the pdb only, to get center of mass of the pdb --#
 c = Complex("leaprc.ff14SB")
 
-c.add_chain_from_PDB(PDB_PATH,parameterized=True)
+c.add_chain_from_PDB(PDB_PATH, protein_name=JOB_NAME, parameterized=True)
 
 #create openmm system for simulation
 c.build()
