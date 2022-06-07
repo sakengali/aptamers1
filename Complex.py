@@ -263,7 +263,7 @@ class Complex(object):
             self.positions = self.inpcrd.positions
 
             #step size set to 0.001 (by NU iGEM)
-            self.integrator = mm.LangevinIntegrator(300.*unit.kelvin, 1./unit.picosecond, 0.0005*unit.picoseconds)
+            self.integrator = mm.LangevinIntegrator(300.*unit.kelvin, 1./unit.picosecond, 0.00005*unit.picoseconds)
             
             #create system
             self.system = self.prmtop.createSystem(nonbondedCutoff=5*unit.angstrom, nonbondedMethod=app.NoCutoff,
