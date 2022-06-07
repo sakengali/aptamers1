@@ -26,6 +26,8 @@ from simtk.openmm import unit
 from simtk.openmm import app
 import Space
 
+import subprocess
+
 #Parser
 parser = argparse.ArgumentParser()
 parser.add_argument("-n", "--name", help="Job name.")
@@ -237,7 +239,13 @@ for i in range(N_NTIDES):
             ## Optionally minimize or "shake" complex, to find lower energy local minimum
             #not recommended! causes issues with proteins
             #complex.minimize()
-            complex.pert_min(size=0.5)
+
+            #start a new program immediately if it crashes here. (by NU iGEM)
+            try:
+                complex.pert_min(size=0.5)
+            except:
+                subprocess.call(f"python dnaMaws.py -p {JOB_NAME}.pdb -n {JOB_NAME}", shell=True)
+
             #Remember positions
             positions0 = complex.positions[:]
 
