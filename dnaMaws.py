@@ -41,6 +41,10 @@ parser.add_argument("-t", "--ntides", type=int,
                     help="Number of nucleotides in the aptamer.")
 parser.add_argument("-p", "--path",
                     help="Path to your PDB file.")
+
+#added by NU iGEM for recurring:
+parser.add_argument("-r", "--run", help="run counter")
+
 args = parser.parse_args()
 
 
@@ -68,6 +72,11 @@ if args.path:
 #FUZZY = 1
 ##Number of rotable junctions in DNA, to distinguish forward and backward rotation
 N_ELEMENTS = 4
+
+#added by NU iGEM
+RUN_COUNT = 0
+if args.run:
+    RUN_COUNT = args.run
 
 
 #Open a pdb file, to monitor progress
@@ -244,7 +253,7 @@ for i in range(N_NTIDES):
             try:
                 complex.pert_min(size=0.5)
             except:
-                subprocess.call(f"python dnaMaws.py -p {JOB_NAME}.pdb -n {JOB_NAME}", shell=True)
+                subprocess.call(f"python dnaMaws.py -p {JOB_NAME}.pdb -n {JOB_NAME} -r {RUN_COUNT+1}", shell=True)
 
             #Remember positions
             positions0 = complex.positions[:]
@@ -270,7 +279,7 @@ for i in range(N_NTIDES):
                 energy = complex.get_energy()[0]
                 #Check if best
                 if free_E == None or energy < free_E:
-                    print(f"protein: {JOB_NAME}; N_NTIDE: {i+2}/{N_NTIDES};  ntide: {ntide}/GATC; chunk: {k+1}/5000; energy: {energy}")
+                    print(f"protein: {JOB_NAME}; N_NTIDE: {i+2}/{N_NTIDES};  ntide: {ntide}/GATC; chunk: {k+1}/5000; energy: {energy}; run_count: {RUN_COUNT}")
                     free_E = energy
                     position = complex.positions[:]
                 #Remember energies
