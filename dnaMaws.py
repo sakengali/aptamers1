@@ -11,6 +11,7 @@ RELEASE_DATE = "2017"
 METHOD = "Kullback-Leibler"
 
 import copy
+from apt import print_function
 import numpy as np
 import argparse
 from datetime import datetime
@@ -43,7 +44,7 @@ parser.add_argument("-p", "--path",
                     help="Path to your PDB file.")
 
 #added by NU iGEM for recurring:
-parser.add_argument("-r", "--run", help="run counter")
+#parser.add_argument("-r", "--run", help="run counter")
 
 args = parser.parse_args()
 
@@ -74,9 +75,9 @@ if args.path:
 N_ELEMENTS = 4
 
 #added by NU iGEM
-RUN_COUNT = 0
-if args.run:
-    RUN_COUNT = args.run
+#RUN_COUNT = 0
+#if args.run:
+#    RUN_COUNT = args.run
 
 
 #Open a pdb file, to monitor progress
@@ -249,11 +250,19 @@ for i in range(N_NTIDES):
             #not recommended! causes issues with proteins
             #complex.minimize()
 
-            #start a new program immediately if it crashes here. (by NU iGEM)
+            #if crashes here, try again, if it crashes again, pass. (by NU iGEM)
             try:
                 complex.pert_min(size=0.5)
             except Exception:
-                subprocess.call(f"python dnaMaws.py -p {JOB_NAME}.pdb -n {JOB_NAME} -r {RUN_COUNT+1}", shell=True)
+                try:
+                    complex.pert_min(size=0.5)
+                except Exception:
+
+                    #to distinguish
+                    print("****************Crashed, passed********************")
+                    
+                    pass     
+                #subprocess.call(f"python dnaMaws.py -p {JOB_NAME}.pdb -n {JOB_NAME}", shell=True)
 
             #Remember positions
             positions0 = complex.positions[:]
@@ -279,7 +288,7 @@ for i in range(N_NTIDES):
                 energy = complex.get_energy()[0]
                 #Check if best
                 if free_E == None or energy < free_E:
-                    print(f"protein: {JOB_NAME}; N_NTIDE: {i+2}/{N_NTIDES};  ntide: {ntide}/GATC; chunk: {k+1}/5000; energy: {energy}; run_count: {RUN_COUNT}")
+                    print(f"protein: {JOB_NAME}; N_NTIDE: {i+2}/{N_NTIDES};  ntide: {ntide}/GATC; chunk: {k+1}/5000; energy: {energy}")
                     free_E = energy
                     position = complex.positions[:]
                 #Remember energies
