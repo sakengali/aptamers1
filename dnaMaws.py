@@ -252,7 +252,7 @@ for i in range(N_NTIDES):
             #start a new program immediately if it crashes here. (by NU iGEM)
             try:
                 complex.pert_min(size=0.5)
-            except:
+            except Exception:
                 subprocess.call(f"python dnaMaws.py -p {JOB_NAME}.pdb -n {JOB_NAME} -r {RUN_COUNT+1}", shell=True)
 
             #Remember positions
