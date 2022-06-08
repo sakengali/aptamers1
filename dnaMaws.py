@@ -11,7 +11,6 @@ RELEASE_DATE = "2017"
 METHOD = "Kullback-Leibler"
 
 import copy
-from apt import print_function
 import numpy as np
 import argparse
 from datetime import datetime
