@@ -254,11 +254,12 @@ for i in range(N_NTIDES):
                 complex.pert_min(size=0.5)
             except Exception:
                 try:
+                    print("*************************Try again**************************")
                     complex.pert_min(size=0.5)
                 except Exception:
 
                     #to distinguish
-                    print("****************Crashed, passed********************")
+                    print("*************************Crashed, passed********************")
                     
                     pass     
                 #subprocess.call(f"python dnaMaws.py -p {JOB_NAME}.pdb -n {JOB_NAME}", shell=True)
