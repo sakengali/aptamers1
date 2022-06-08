@@ -123,8 +123,8 @@ c = Complex("leaprc.ff14SB")
 
 c.add_chain_from_PDB(PDB_PATH, protein_name=JOB_NAME, parameterized=True)
 
-#create openmm system for simulation
-c.build()
+#create openmm system for simulation   ///JOB_NAME added by NU iGEM (to all build() calls)
+c.build(file_name=JOB_NAME)
 #----------------------------------------------------------------------#
 
 #Create a sampling Cube of Diameter 50. Angstroms around the pdb center of mass
@@ -154,7 +154,7 @@ for ntide in ["DGN", "DAN", "DTN", "DCN"]:
     aptamer.create_sequence(ntide)
     #Build the Complex
     print("INTO LEAP ---------------------------------------------------------------------")
-    complex.build()
+    complex.build(file_name=JOB_NAME)
     print("OUT OF LEAP -------------------------------------------------------------------")
     #Remember its initial positions
     positions0 = complex.positions[:]
@@ -232,7 +232,7 @@ for i in range(N_NTIDES):
             aptamer = complex.chains[0]
             aptamer.create_sequence(best_old_sequence)
             print("INTO LEAP ------------------------------------------------------------------------------")
-            complex.build()
+            complex.build(file_name=JOB_NAME)
             print("OUT OF LEAP ----------------------------------------------------------------------------")
             #Readjust positions
             complex.positions = best_old_positions[:]
@@ -319,7 +319,7 @@ for i in range(N_NTIDES):
 result_complex = copy.deepcopy(cpx)
 aptamer = result_complex.chains[0]
 aptamer.create_sequence(best_sequence)
-result_complex.build()
+result_complex.build(file_name=JOB_NAME)
 result_complex.positions = best_positions[:]
 pdb_result = open("{0}_RESULT.pdb".format(JOB_NAME),"w")
 app.PDBFile.writeModel(result_complex.topology, result_complex.positions, file=pdb_result)
