@@ -243,7 +243,7 @@ for i in range(N_NTIDES):
                 #Prepend new nucleotide
                 aptamer.prepend_sequence(ntide)
             print("INTO LEAP ------------------------------------------------------------------------------")
-            complex.rebuild()
+            complex.rebuild(file_name=JOB_NAME)
             print("OUT OF LEAP ----------------------------------------------------------------------------")
             ## Optionally minimize or "shake" complex, to find lower energy local minimum
             #not recommended! causes issues with proteins
