@@ -229,7 +229,7 @@ class Complex(object):
         structure = Structure([pdb_name], residue_length=[length], residue_path=path)
         self.add_chain(pdb_name, structure)
             
-    def build(self, target_path="", file_name="out"):
+    def build(self, file_name, target_path=""):
         build_string = self.build_string 
         if self.chains:
             for chain in self.chains:
@@ -277,9 +277,9 @@ class Complex(object):
         else:
             raise ValueError('Empty Complex! CANNOT build!')
             
-    def rebuild(self, target_path="", file_name="out", exclusion=[]):
+    def rebuild(self, file_name, target_path="", exclusion=[]):
         old_positions = self.positions[:]
-        self.build()
+        self.build(file_name=file_name)
         #print("EXPECTED LENGTH OF POSITIONS: %s"%len(self.positions))
         for index, chain in enumerate(self.chains):
             if not (chain in exclusion):
