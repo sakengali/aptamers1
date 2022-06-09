@@ -100,7 +100,6 @@ output.write("Start time: {0}\n".format(str(datetime.now())))
 RNA = XMLStructure("RNA.xml")
 
 #Changed forcefield to ff14SB (default when creating amber files)
-
 #Instantiate the Complex for further computation
 cpx = Complex("leaprc.ff14SB")
 
@@ -141,7 +140,7 @@ best_positions = None
 output.write("Initialized succesfully!\n")
 
 #for each nucleotide in GATC
-for ntide in ["DGN", "DAN", "DTN", "DCN"]:
+for ntide in 'GAUC':
     output.write("{0}: starting initial step for '{1}'\n".format(str(datetime.now()),ntide))
     energies = []
     free_E = None
@@ -220,7 +219,7 @@ for i in range(N_NTIDES):
     best_old_sequence = best_sequence
     best_old_positions = best_positions[:]
     best_entropy = None
-    for ntide in ["DGN", "DAN", "DTN", "DCN"]:
+    for ntide in 'GAUC':
         #For append nucleotide or prepend nucleotide
         for append in [True, False]:
             energies = []
