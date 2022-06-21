@@ -1,5 +1,5 @@
 # aptamers1
-maws
+maws by iGEM Heidelberg 2017
 
 Create amber files of pdb of your protein, name them out.prmtop and out.inprcd, 
 
